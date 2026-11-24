@@ -20,6 +20,17 @@ interface LatestMeasurementView {
 })
 export class TabMonitoreoPage implements OnInit {
   nombre = 'Paciente';
+
+  get saludo(): string {
+    const hora = new Date().getHours();
+    if (hora >= 6 && hora < 12) {
+      return '¡Buenos días';
+    } else if (hora >= 12 && hora < 19) {
+      return '¡Buenas tardes';
+    } else {
+      return '¡Buenas noches';
+    }
+  }
   latestMeasurement: LatestMeasurementView | null = null;
   latestMeasurementLoading = true;
   latestMeasurementMessage = 'Aún no hay lecturas registradas';
